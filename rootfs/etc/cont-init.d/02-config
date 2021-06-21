@@ -10,5 +10,6 @@ sed -i -e "/^LATITUDE=.*/LATITUDE=\"${LATITUDE}\"/" /etc/default/adsbexchange
 sed -i -e "/^LONGITUDE=.*/LONGITUDE=\"${LONGITUDE}\"/" /etc/default/adsbexchange
 sed -i -e "/^ALTITUDE=.*/ALTITUDE=\"${ALTITUDE}\"/" /etc/default/adsbexchange
 
+# shellcheck disable=SC2153
 USERNAME="$(echo -n -e "${MYUSERNAME}" | tr -c '[a-zA-Z0-9]_\- ' '_')"
 sed -i -e "/^USER=.*/USER=\"${USERNAME}\"/" /etc/default/adsbexchange

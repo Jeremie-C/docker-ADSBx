@@ -9,7 +9,7 @@ COPY rootfs/ /
 
 RUN apt-get update && apt-get upgrade -y && \
   apt-get install -y --no-install-recommends \
-  ntp git curl build-essential python3-dev python3-venv \
+  ntp git wget curl build-essential python3-dev python3-venv \
   socat netcat uuid-runtime zlib1g-dev zlib1g \
   libncurses6 libncurses-dev && \
   # S6 OVERLAY
