@@ -42,8 +42,9 @@ fi
 # UUID
 if [ -z "${ADSBX_UUID}" ]; then
   echo -e "${YELLOW}WARNING: ADSBX_UUID environment variable not set, new UUID will be generated${NOCOLOR}"
-  UUID=$(command -v uuidgen)
-  echo -e "${CYAN}WARNING: Please restart the container with environment variable ADSBX_UUID=${UUID}ADSBX_UUID environment variable"
+  UUIDGEN=$(command -v uuidgen)
+  UUID=$($UUIDGEN)
+  echo -e "${CYAN}WARNING: Please restart the container with environment variable ADSBX_UUID=${UUID} environment variable"
   EXITCODE=1
 else
   if ! [[ "${ADSBX_UUID}" =~ ^\{?[A-F0-9a-f]{8}-[A-F0-9a-f]{4}-[A-F0-9a-f]{4}-[A-F0-9a-f]{4}-[A-F0-9a-f]{12}\}?$ ]]; then
