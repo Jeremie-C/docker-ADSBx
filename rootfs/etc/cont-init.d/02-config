@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+# UUID
+echo "${ADSBX_UUID}" > /boot/adsbx-uuid
+
+# ADSBEXCHANGE
+sed -i -e "/^INPUT=.*/INPUT=\"${BEAST_HOST}:${BEAST_PORT}\"/" /etc/default/adsbexchange
+sed -i -e "/^LATITUDE=.*/LATITUDE=\"${LATITUDE}\"/" /etc/default/adsbexchange
+sed -i -e "/^LONGITUDE=.*/LONGITUDE=\"${LONGITUDE}\"/" /etc/default/adsbexchange
+sed -i -e "/^ALTITUDE=.*/ALTITUDE=\"${ALTITUDE}\"/" /etc/default/adsbexchange
+
+USERNAME="$(echo -n -e "${MYUSERNAME}" | tr -c '[a-zA-Z0-9]_\- ' '_')"
+sed -i -e "/^USER=.*/USER=\"${USERNAME}\"/" /etc/default/adsbexchange

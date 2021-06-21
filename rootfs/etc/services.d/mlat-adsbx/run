@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+# shellcheck disable=SC2086
+/usr/local/share/adsbexchange/adsbexchange-mlat.sh \
+  2>&1 | mawk -W Interactive '{print "[mlat-adsbx] " $0}'
