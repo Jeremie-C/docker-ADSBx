@@ -7,6 +7,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 COPY rootfs/ /
 
+# hadolint ignore=SC1091
 RUN apt-get update && apt-get upgrade -y && \
   apt-get install -y --no-install-recommends \
   ntp git wget curl build-essential python3-dev python3-venv \
