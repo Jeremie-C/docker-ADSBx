@@ -5,11 +5,16 @@
 echo "${ADSBX_UUID}" > /boot/adsbx-uuid
 
 # ADSBEXCHANGE
-sed -i -e "/^INPUT=.*/c\INPUT=\"${BEAST_HOST}:${BEAST_PORT}\"/" /etc/default/adsbexchange
-sed -i -e "/^LATITUDE=.*/c\LATITUDE=\"${LATITUDE}\"/" /etc/default/adsbexchange
-sed -i -e "/^LONGITUDE=.*/c\LONGITUDE=\"${LONGITUDE}\"/" /etc/default/adsbexchange
-sed -i -e "/^ALTITUDE=.*/c\ALTITUDE=\"${ALTITUDE}\"/" /etc/default/adsbexchange
+sed -i -e "/^INPUT=.*/c\INPUT=\"${BEAST_HOST}:${BEAST_PORT}\"" /etc/default/adsbexchange
+sed -i -e "/^LATITUDE=.*/c\LATITUDE=\"${LATITUDE}\"" /etc/default/adsbexchange
+sed -i -e "/^LONGITUDE=.*/c\LONGITUDE=\"${LONGITUDE}\"" /etc/default/adsbexchange
+sed -i -e "/^ALTITUDE=.*/c\ALTITUDE=\"${ALTITUDE}\"" /etc/default/adsbexchange
 
 # shellcheck disable=SC2153
 USERNAME="$(echo -n -e "${MYUSERNAME}" | tr -c '[a-zA-Z0-9]_\- ' '_')"
-sed -i -e "/^USER=.*/c\USER=\"${USERNAME}\"/" /etc/default/adsbexchange
+sed -i -e "/^USER=.*/c\USER=\"${USERNAME}\"" /etc/default/adsbexchange
+
+# PRIVACY
+if [ "${PRIVACY}" == "yes" ]; then
+  sed -i -e "/^PRIVACY=.*/c\PRIVACY=\"--privacy\"" /etc/default/adsbexchange
+fi

@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
-  BEAST_PORT=30005
+    BEAST_PORT=30005
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 

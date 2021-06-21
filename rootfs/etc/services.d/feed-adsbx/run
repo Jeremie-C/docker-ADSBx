@@ -1,6 +1,8 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
+mkdir -p /run/adsbexchange-feed
+
 # shellcheck disable=SC2086
 /usr/local/share/adsbexchange/adsbexchange-feed.sh \
   2>&1 | mawk -W Interactive '{print "[feed-adsbx] " $0}'
