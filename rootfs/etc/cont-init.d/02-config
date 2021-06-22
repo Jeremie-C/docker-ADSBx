@@ -9,6 +9,7 @@ sed -i -e "/^INPUT=.*/c\INPUT=\"${BEAST_HOST}:${BEAST_PORT}\"" /etc/default/adsb
 sed -i -e "/^LATITUDE=.*/c\LATITUDE=\"${LATITUDE}\"" /etc/default/adsbexchange
 sed -i -e "/^LONGITUDE=.*/c\LONGITUDE=\"${LONGITUDE}\"" /etc/default/adsbexchange
 sed -i -e "/^ALTITUDE=.*/c\ALTITUDE=\"${ALTITUDE}\"" /etc/default/adsbexchange
+sed -i -e "/^REDUCE_INTERVAL=.*/c\REDUCE_INTERVAL=\"${REDUCE_INTERVAL:-0.5}\"" /etc/default/adsbexchange
 
 # shellcheck disable=SC2153
 USERNAME="$(echo -n -e "${MYUSERNAME}" | tr -c '[a-zA-Z0-9]_\- ' '_')"
@@ -17,4 +18,19 @@ sed -i -e "/^USER=.*/c\USER=\"${USERNAME}\"" /etc/default/adsbexchange
 # PRIVACY
 if [ "${PRIVACY}" == "yes" ]; then
   sed -i -e "/^PRIVACY=.*/c\PRIVACY=\"--privacy\"" /etc/default/adsbexchange
+fi
+
+# MLAT_2
+if [[ -n "${MLAT_RESULT2}" ]]; then
+  sed -i -e "/^RESULTS2=.*/c\RESULTS2=\"--results ${MLAT_RESULT2}\"" /etc/default/adsbexchange
+fi
+
+# MLAT_3
+if [[ -n "${MLAT_RESULT3}" ]]; then
+  sed -i -e "/^RESULTS3=.*/c\RESULTS1=\"--results ${MLAT_RESULT3}\"" /etc/default/adsbexchange
+fi
+
+# MLAT_4
+if [[ -n "${MLAT_RESULT4}" ]]; then
+  sed -i -e "/^RESULTS4=.*/c\RESULTS4=\"--results ${MLAT_RESULT4}\"" /etc/default/adsbexchange
 fi

@@ -46,6 +46,6 @@ RUN apt-get update && apt-get upgrade -y && \
   rm -rf  /src /scripts /var/lib/apt/lists/*
 
 ENTRYPOINT [ "/init" ]
-
+EXPOSE 30105
 HEALTHCHECK --start-period=120s --interval=300s CMD /healthcheck.sh
 LABEL maintainer="Jeremie-C <Jeremie-C@users.noreply.github.com>"
