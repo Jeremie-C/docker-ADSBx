@@ -10,6 +10,9 @@ COPY rootfs/ /
 # hadolint ignore=SC1091
 RUN apt-get update && apt-get upgrade -y && \
   apt-get install -y --no-install-recommends \
+  # Healthcheck
+  jq bc \
+  # Other
   ntp git wget curl build-essential python3-dev python3-venv \
   socat netcat uuid-runtime zlib1g-dev zlib1g \
   libncurses6 libncurses-dev && \
