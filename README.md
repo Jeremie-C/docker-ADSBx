@@ -42,4 +42,5 @@ For incomming connections : `protocol,listen,port`
 ## Ports
 
 | Port | Detail |
+| ---- | ------ |
 | 30105/tcp | MLAT Results Beast protocol output. Optional. Allow other applications outside docker host to receive MLAT results |
