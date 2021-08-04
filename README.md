@@ -1,5 +1,11 @@
 # docker-ADSBx
 
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/jeremiec82/adsbx?style=plastic)
+![Docker Pulls](https://img.shields.io/docker/pulls/jeremiec82/adsbx?style=plastic)
+[![Deploy to Docker Hub](https://github.com/Jeremie-C/docker-ADSBx/actions/workflows/deploy.yml/badge.svg)](https://github.com/Jeremie-C/docker-ADSBx/actions/workflows/deploy.yml)
+[![Check Code](https://github.com/Jeremie-C/docker-ADSBx/actions/workflows/check_code.yml/badge.svg)](https://github.com/Jeremie-C/docker-ADSBx/actions/workflows/check_code.yml)
+[![Docker Build](https://github.com/Jeremie-C/docker-ADSBx/actions/workflows/test_build.yml/badge.svg)](https://github.com/Jeremie-C/docker-ADSBx/actions/workflows/test_build.yml)
+
 Docker container to feed ADS-B data into [adsbexchange](https://www.adsbexchange.com).
 
 ## Environment Variables
@@ -22,10 +28,8 @@ Docker container to feed ADS-B data into [adsbexchange](https://www.adsbexchange
 
 #### `MLAT_RESULT` syntax
 
-This variable allows you to configure incoming or outgoing connections.
-
-For outgoing connections : `protocol,connect,ip:port`
-
+This variable allows you to configure incoming or outgoing connections.  
+For outgoing connections : `protocol,connect,ip:port`  
 For incomming connections : `protocol,listen,port`
 
 * `protocol` can be one of the following:
@@ -34,3 +38,8 @@ For incomming connections : `protocol,listen,port`
   * `ext_basestation`: ext_Basestation-format output
 * `ip` is an IP address. Specify an IP/hostname/containername for outgoing connections.
 * `port` is a TCP port number
+
+## Ports
+
+| Port | Detail |
+| 30105/tcp | MLAT Results Beast protocol output. Optional. Allow other applications outside docker host to receive MLAT results |

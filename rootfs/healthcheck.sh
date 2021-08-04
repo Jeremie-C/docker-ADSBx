@@ -28,7 +28,8 @@ else
   EXITCODE=1
 fi
 
-READSB_DEATHS=$(s6-svdt /run/s6/services/feed-adsbx | grep -cv "exitcode 0")
+# shellcheck disable=SC2126
+READSB_DEATHS=$(s6-svdt /run/s6/services/feed-adsbx | grep -v "exitcode 0" | wc -l)
 if [ "$READSB_DEATHS" -ge 1 ]; then
     echo "feed-adsbx deaths: $READSB_DEATHS. UNHEALTHY"
     EXITCODE=1
@@ -37,7 +38,8 @@ else
 fi
 s6-svdt-clear /run/s6/services/feed-adsbx
 
-MLAT_DEATHS=$(s6-svdt /run/s6/services/mlat-adsbx | grep -cv "exitcode 0")
+# shellcheck disable=SC2126
+MLAT_DEATHS=$(s6-svdt /run/s6/services/mlat-adsbx | grep -v "exitcode 0" | wc -l)
 if [ "$MLAT_DEATHS" -ge 1 ]; then
     echo "mlat-adsbx deaths: $MLAT_DEATHS. UNHEALTHY"
     EXITCODE=1
